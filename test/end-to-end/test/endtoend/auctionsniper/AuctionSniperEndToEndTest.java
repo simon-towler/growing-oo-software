@@ -13,11 +13,15 @@ public class AuctionSniperEndToEndTest {
 
     @Test
     public void sniperJoinsAuctionUntilAuctionCloses() throws Exception {
+        // 1. When an auction is selling an item,
         auction.startSellingItem(); // Step 1
+        // 2. And an Auction Sniper has started to bid in that auction,
         application.startBiddingIn(auction); // Step 2
+        // 3. Than the auction will receive a Join request from the Auction Sniper.
         auction.hasReceivedJoinRequestFrom("sniper@localhost/Auction"); // Step 3
-
+        // 4. When an auction announces that it is Closed,
         auction.announceClosed(); // Step 4
+        // 5. Then the Auction Sniper will show that it lost the auction.
         application.showsSniperHasLostAuction(); // Step 5
     }
 

@@ -4,6 +4,9 @@ import auctionsniper.ui.Main;
 
 import static test.endtoend.auctionsniper.FakeAuctionServer.XMPP_HOSTNAME;
 
+/**
+ * Runs the Sniper application for test purposes
+ */
 public class ApplicationRunner {
     public static final String SNIPER_ID = "sniper";
     public static final String SNIPER_PASSWORD = "sniper";

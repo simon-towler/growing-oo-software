@@ -5,11 +5,8 @@ import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.jivesoftware.smack.*;
 import org.jivesoftware.smack.packet.Message;
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.TimeUnit;
-
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -40,6 +37,7 @@ public class FakeAuctionServer {
 
   public FakeAuctionServer(String itemId) {
     this.itemId = itemId;
+    // opens a connection to the locally running instance of Openfire
     this.connection = new XMPPConnection(XMPP_HOSTNAME);
   }
 
@@ -77,7 +75,7 @@ public class FakeAuctionServer {
   }
 
   /*
-  1. The test needs to know when a Join message has arrived. We just check whether any message has arrived, since the
+  1. The test needs to know when a Join message has arrived. We just check whether _any_ message has arrived, since the
   Sniper will only be sending Join messages to start with; we'll fill in more detail as we grow the application. This
   implementation will fail if no message is received within 5 seconds.
    */
